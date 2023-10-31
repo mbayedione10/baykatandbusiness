@@ -16,9 +16,9 @@ const {title, description} = Astro.props
         <h2 class="text-lg md:text-xl font-semibold text-heading-2">
             {title}
         </h2>
-        <Paragraph>
-            {description}
-        </Paragraph>
+        {description.split('\n').map((line) => (
+            <Paragraph>{line}</Paragraph>
+        ))}
     </div>
     <span class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"></span>
 </div>
