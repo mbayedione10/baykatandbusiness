@@ -1,0 +1,36 @@
+---
+export interface Props {
+    title: string;
+    items:{
+        content:string,
+        icon:string
+    }[]
+}
+
+
+const {title, items} = Astro.props
+---
+
+
+<nav class="space-y-6">
+            <h2 class=" capitalze font-semibold text-heading-1 text-xl">
+                {title}
+            </h2>
+            <ul class="space-y-3 font-medium md:text-lg text-heading-3">
+
+                    {items.map((item)=>(
+                        <li class="flex items-center transition hover:text-primary">
+                            <span class="mr-2" set:html={item.icon} ></span> 
+                            {item.content.includes('@') ? (
+                                <a href={`mailto:${item.content}`}>{item.content}</a>)
+                            : item.content.match(/^\+?\d+$/) ? (
+                                <a href={`tel:${item.content}`}>{item.content}</a>)
+                            : (
+                                <span>{item.content}</span>)
+                            }
+                        </li>
+                    ))
+
+                    }
+            </ul>                     
+</nav>
