@@ -1,9 +1,9 @@
-<h1>AgenceX Landing page</h1>
+<h1>Baykat & Business Landing page</h1>
 
 A simple landing page for a digital agency
 
-![AgenceX light Theme](./screens/demoLight.webp)
-![AgenceX Dark Theme](./screens/demoDark.webp)
+![Baykat & Business light Theme](https://res.cloudinary.com/dkgciiiov/image/upload/v1699443232/eglvpjzhgvkv57temvqr.png)
+![Baykat & Business Dark Theme](https://res.cloudinary.com/dkgciiiov/image/upload/v1699443228/odm1f5vp1cizne0lqc6i.png)
 
 
 ## Tools
