@@ -5,16 +5,24 @@ import Services from '../components/sections/Services.astro';
 import AboutUs from '../components/sections/AboutUs.astro';
 import Contact from '../components/sections/Contact.astro';
 import Agritech from '../components/sections/Agritech.astro';
-import ServicesAgritech from '../components/sections/Services_agritech.astro';
+import { services, agritech } from "../utils/data.ts";
 ---
 
 <Layout title="Baykat & Business">
 	<main class="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">
 		<Hero/>
-		<Services/>
+		<Services 
+			titreSection={"Nos Services"} 
+			descSection = {"Notre Engagement envers l'Agriculture: Une Gamme Complète de Services."} 
+			items = {services}
+		/>
 		<AboutUs/>	
 		<Agritech/>
-		<ServicesAgritech/>
+		<Services 
+			titreSection={"Dans BAYKATBI, nous avons:"} 
+			descSection = {""} 
+			items = {agritech}
+		/>
 		<Contact/>
 		
 	</main>
