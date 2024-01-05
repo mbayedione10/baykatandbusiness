@@ -31,7 +31,6 @@ const { title } = Astro.props;
     <Footer />
     <script async src={gaSrc}></script>
     <script async>
-    const TRACKING_ID = import.meta.env.PUBLIC_TRACKING_ID;
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       window.dataLayer.push(arguments);
