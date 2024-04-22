@@ -11,15 +11,30 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo_bb.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Baykat&Business - Votre conseiller en production agricole et agrobusiness">
+    <meta
+      name="description"
+      content="Baykat&Business - Votre conseiller en production agricole et agrobusiness"
+    />
     <title>{title}</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ8ZV2988Z"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-VQ8ZV2988Z");
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -31,13 +46,13 @@ const { title } = Astro.props;
     <Footer />
     <script async src={gaSrc}></script>
     <script async>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
 
-    gtag("js", new Date());
-    gtag("config", TRACKING_ID);
+      gtag("js", new Date());
+      gtag("config", TRACKING_ID);
     </script>
   </body>
   <script>
@@ -89,36 +104,33 @@ const { title } = Astro.props;
       "[data-nav-overlay]"
     ) as HTMLDivElement;
     if (toggleMenu) {
-      toggleMenu.addEventListener("click", e => {
+      toggleMenu.addEventListener("click", (e) => {
         e.preventDefault();
         if (toggleMenu.getAttribute("data-open-nav") === "false") {
           toggleMenu.setAttribute("data-open-nav", "true");
           overlayNav.setAttribute("data-is-visible", "true");
           document.body.classList.add("!overflow-y-hidden");
-		  navbar.style.height = `${navbar.scrollHeight}px`
-
-        }else{
-			toggleMenu.setAttribute("data-open-nav", "false");
-        	overlayNav.setAttribute("data-is-visible", "false");
-        	document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
-		}
-		
-        
+          navbar.style.height = `${navbar.scrollHeight}px`;
+        } else {
+          toggleMenu.setAttribute("data-open-nav", "false");
+          overlayNav.setAttribute("data-is-visible", "false");
+          document.body.classList.remove("!overflow-y-hidden");
+          navbar.style.height = "0px";
+        }
       });
 
       navbar.addEventListener("click", () => {
         toggleMenu.setAttribute("data-open-nav", "false");
         overlayNav.setAttribute("data-is-visible", "false");
         document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
+        navbar.style.height = "0px";
       });
 
       overlayNav.addEventListener("click", () => {
         toggleMenu.setAttribute("data-open-nav", "false");
-        	overlayNav.setAttribute("data-is-visible", "false");
-        	document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
+        overlayNav.setAttribute("data-is-visible", "false");
+        document.body.classList.remove("!overflow-y-hidden");
+        navbar.style.height = "0px";
       });
     }
   </script>
@@ -130,9 +142,9 @@ const { title } = Astro.props;
     --color-box: 255 255 255;
     --box-border: 229 231 235;
     --box-sd: 226 232 240 / 0.5;
-	--heading-1:  23 37 84;
-	--heading-2: 31 41 55;
-	--heading-3: 55 65 81;
+    --heading-1: 23 37 84;
+    --heading-2: 31 41 55;
+    --heading-3: 55 65 81;
   }
 
   .dark {
@@ -141,13 +153,12 @@ const { title } = Astro.props;
     --box-border: 243 244 246/0.1;
     --box-sd: transparent;
 
-	
-	--heading-1:  255 255 255;
-	--heading-2:  243 244 246;
-	--heading-3:  209 213 219;
+    --heading-1: 255 255 255;
+    --heading-2: 243 244 246;
+    --heading-3: 209 213 219;
   }
 
-  html{
+  html {
     scroll-behavior: smooth;
   }
   body {
@@ -165,7 +176,6 @@ const { title } = Astro.props;
     transform: translateY(-0.375rem) rotate(-40deg);
   }
 
-  
   [data-nav-overlay][data-is-visible="true"] {
     visibility: visible;
     display: flex;
