@@ -1,9 +1,8 @@
 ---
-
 export interface Props {
-    href: string;
-    text: string;
-    variant?: "primary" | "secondary";
+  href: string;
+  text: string;
+  variant?: "primary" | "secondary";
 }
 
 const { href, text, variant = "primary" } = Astro.props;
@@ -12,14 +11,14 @@ const getButtonStyle = (variant) => {
   if (variant === "primary") {
     return "bg-primary text-white";
   }
-  return "bg-secondary text-white";
+  return "bg-[#008F42] text-white";
 };
 ---
 
 <a
-    href={href}
-    target="_blank"
-    class={`fixed mt-8 right-4 top transform -translate-y-1/2 px-6 py-3 rounded-full shadow-lg ${getButtonStyle(variant)} hover:bg-opacity-90 transition ease-in-out duration-300`}
-    >
-    {text}
+  href={href}
+  target="_blank"
+  class={`fixed mt-8 right-4 top transform -translate-y-1/2 px-6 py-3 rounded-full shadow-lg ${getButtonStyle(variant)} hover:bg-opacity-90 transition ease-in-out duration-300`}
+>
+  {text}
 </a>
