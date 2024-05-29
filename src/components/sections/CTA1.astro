@@ -1,0 +1,64 @@
+---
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Title from "../shared/Title.astro";
+import Button from "../shared/Button.astro";
+---
+
+<section id="features">
+  <Container className="flex flex-col midmd:flex-row gap-10 lg:gap-12">
+    <div class="flex-1 flex flex-col">
+      <Title>Proposition de partenariat</Title>
+      <Paragraph className="mt-8">
+        En tant que partenaire, notre objectif est d'aider nos clients à
+        maximiser leur investissement dans le secteur agricole tout en
+        optimisant la production et la distribution.
+      </Paragraph>
+      <Paragraph className="mt-2">
+        Nous évoluons progressivement vers la digitalisation des chaines de
+        valeur agricoles avec un accent particulier mis sur l’adoption des
+        bonnes pratiques de production et normes qualité et la maîtrise de la
+        traçabilité des produits.
+      </Paragraph>
+      <Paragraph className="mt-2">
+        Que vous soyez une structure privée ou publique, à but lucratif ou non,
+        dans les domaines de la formation professionnelle, de l’accompagnement
+        de PME, de la vente de services agricoles, logistiques et/ou
+        technologiques, de la fourniture de machinisme et/ou d’intrants
+        agricoles, nous seront ravi de trouver des axes de collaboration
+        simplifiés et efficients.
+      </Paragraph>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfkGsenCe55gQyjI9g4-S4QV4GtQpT-IiJB_memigUcRnMbbw/viewform?usp:pp_url"
+        target="_blank"
+      >
+        <Button className="mt-4" variant={"secondary"}>
+          <span class="text-white relative z-[5]">Soumettre</span>
+        </Button>
+      </a>
+    </div>
+
+    <div class="flex-1 flex justify-end items-center">
+      <div class="w-full h-90 sm:h-96 midmd:h-full relative">
+        <div
+          class="absolute rotate-45 -left-5 md:-left-10 lg:-left-20 xl:-left-24 p-1 top-1/2 w-16 h-16 bg-gradient-to-br from-primary to-orange-400 blur-3xl opacity-50"
+        >
+        </div>
+        <div
+          class="absolute p-1 -top-4 md:-top-10 right-0 w-20 h-20 bg-gradient-to-br from-primary to-orange-400 rounded-full blur-3xl opacity-60"
+        >
+        </div>
+        <span
+          class="absolute w-full aspect-[16/5] -skew-x-12 rounded-full bg-gradient-to-tr from-primary to-green-400 opacity-40 blur-2xl left-0 bottom-0"
+        ></span>
+        <img
+          src={"/images/partenaire.jpeg"}
+          alt="banner image"
+          width="2359"
+          height="2359"
+          class="w-full h-80 sm:h-96 midmd:h-100 object-cover rounded-3xl"
+        />
+      </div>
+    </div>
+  </Container>
+</section>

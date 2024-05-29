@@ -1,29 +1,54 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/sections/Hero.astro';
-import Services from '../components/sections/Services.astro';
-import AboutUs from '../components/sections/AboutUs.astro';
-import Contact from '../components/sections/Contact.astro';
-import Agritech from '../components/sections/Agritech.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/sections/Hero.astro";
+import Services from "../components/sections/Services.astro";
+import AboutUs from "../components/sections/AboutUs.astro";
+import Contact from "../components/sections/Contact.astro";
+import Agritech from "../components/sections/Agritech.astro";
 import { services, agritech } from "../utils/data.ts";
+import CTA1 from "../components/sections/CTA1.astro";
+import CTA2 from "../components/sections/CTA2.astro";
+import Title from "../components/shared/Title.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Container from "../components/shared/Container.astro";
+import FixedButton from "../components/shared/FixedButton.astro";
 ---
 
 <Layout title="Baykat & Business">
-	<main class="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden">
-		<Hero/>
-		<Services 
-			titreSection={"Nos Services"} 
-			descSection = {"Notre Engagement envers l'Agriculture: Une Gamme Complète de Services."} 
-			items = {services}
-		/>
-		<AboutUs/>	
-		<Agritech/>
-		<Services 
-			titreSection={"Dans BAYKATBI, nous avons:"} 
-			descSection = {""} 
-			items = {agritech}
-		/>
-		<Contact/>
-		
-	</main>
+  <main class="flex flex-col gap-y-20  overflow-hidden">
+    <Hero />
+    <Services
+      titreSection={"Nos Services"}
+      descSection={"Notre Engagement envers l'Agriculture: Une Gamme Complète de Services."}
+      items={services}
+    />
+    <Container className="space-y-10 md:0">
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <Title> Formations et Partenariats </Title>
+        <Paragraph>
+          Découvrez les bases de l'agrobusiness avec une formation immersive
+          <br />
+          ou
+          <br />
+          Collaborez avec nous pour maximiser votre investissement agricole et optimiser
+          les chaînes de valeur
+        </Paragraph>
+      </div>
+    </Container>
+    <CTA2 />
+    <CTA1 />
+    <AboutUs />
+    <Agritech />
+    <Services
+      titreSection={"Dans BAYKATBI, nous avons:"}
+      descSection={""}
+      items={agritech}
+    />
+    <Contact />
+    <FixedButton
+      href="https://docs.google.com/forms/d/e/1FAIpQLScDeacBPbpRcKuCTupYtwvkJeiP2OV61baTiAEVBXy9bNXabg/viewform"
+      text="Formation du 17-06 au 14-07 2024"
+	  variant="secondary"
+    />
+  </main>
 </Layout>

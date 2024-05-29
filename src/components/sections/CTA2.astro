@@ -1,0 +1,77 @@
+---
+import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
+import Title from "../shared/Title.astro";
+import Button from "../shared/Button.astro";
+---
+
+<section id="features">
+  <Container className="flex flex-col midmd:flex-row gap-10 lg:gap-12">
+    <div class="flex-1 flex justify-start items-center order-2 midmd:order-1">
+      <div class="w-full h-90 sm:h-96 midmd:h-full relative">
+        <div
+          class="absolute rotate-45 -left-5 md:-left-10 lg:-left-20 xl:-left-24 p-1 top-1/2 w-16 h-16 bg-gradient-to-br from-primary to-orange-400 blur-3xl opacity-50"
+        >
+        </div>
+        <div
+          class="absolute p-1 -top-4 md:-top-10 right-0 w-20 h-20 bg-gradient-to-br from-primary to-orange-400 rounded-full blur-3xl opacity-60"
+        >
+        </div>
+        <span
+          class="absolute w-full aspect-[16/5] -skew-x-12 rounded-full bg-gradient-to-tr from-primary to-green-400 opacity-40 blur-2xl left-0 bottom-0"
+        ></span>
+        <img
+          src={"/images/partenaire2.jpg"}
+          alt="banner image"
+          width="2359"
+          height="2359"
+          class="w-full h-150 sm:h-96 midmd:h-100 object-cover rounded-3xl"
+        />
+      </div>
+    </div>
+
+    <div class="flex-1 flex flex-col order-1 midmd:order-2">
+      <Title>Formation "Découverte Agro" Du 17 Juin au 14 Juillet 2024</Title>
+      <Paragraph className="mt-8">
+        "Découverte Agro" propose un mois d'immersion dans l'agrobusiness, avec
+        des cours théoriques sur la planification de projets dans divers
+        sous-secteurs (production végétale, animale, aquaculture, transformation
+        agroalimentaire, commerce agricole, agritech). La formation se termine
+        par une journée pratique dans une ferme pour découvrir les réalités du
+        secteur.
+      </Paragraph>
+      <Paragraph className="mt-2">
+        Rythme d'enseignement:
+        <ul>
+          <li>
+            <span
+              class="font-bold bg-box-bg rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center"
+              >&checkmark;</span
+            > 1 séance théorique par semaines (pour les 3 premières semaines)
+          </li>
+          <li>
+            <span
+              class="font-bold bg-box-bg rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center"
+              >&checkmark;</span
+            > 1 dernière séance théorique à la 4ème semaine
+          </li>
+          <li>
+            <span
+              class="font-bold bg-box-bg rounded-full w-8 h-8 mr-3 text-primary inline-flex justify-center items-center"
+              >&checkmark;</span
+            > 1 séance pratique à la 4ème semaine (journée d'immersion dans une ferme
+            agricole)
+          </li>
+        </ul>
+      </Paragraph>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScDeacBPbpRcKuCTupYtwvkJeiP2OV61baTiAEVBXy9bNXabg/viewform"
+        target="_blank"
+      >
+        <Button className="mt-4" variant={"secondary"}>
+          <span class="text-white relative z-[5]">S'inscrire !</span>
+        </Button>
+      </a>
+    </div>
+  </Container>
+</section>
