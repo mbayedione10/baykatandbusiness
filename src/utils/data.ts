@@ -38,69 +38,62 @@ const contact=[
 
 const services = [
     {
-        title: "Services phytosanitaires",
+        title: "Étude et planification de projet agricole",
         description: `
-       • Diagnostic à distance ou sur site
-       • Plan de traitement phytosanitaire
-       • Intervention sur site
+       • Analyse de faisabilité
+       • Planification des cultures
+       • Élaboration du plan financier
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
+        icon: `📋`,
     },
     {
-        title: "Optimisation sol",
+        title: "Aménagement de terrain agricole",
         description: `
-       • Diagnostic état du terrain agricole
-       • Plan de fertilisation ou de décontamination
-       • Intervention sur site
+       • Travaux de préparation du sol
+       • Installation de systèmes de drainage
+       • Optimisation de l'irrigation
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
+        icon: `🌳`,
     },
     {
-        title: "Planification agricole",
+        title: "Infrastructures et équipements de production",
         description: `
-       • Elaboration plan d'investissement
-       • Elaboration calendrier cultural sur 2 ans
-       • Elaboration comptes d'exploitation
+       • Installation de serres
+       • Solutions énergétiques solaires
+       • Entretien des équipements agricoles
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
+        icon: `☀️`,
     },
     {
-        title: "Gestion irrigation",
+        title: "Formations collectives et coaching individuel",
         description: `
-       • Prise d'informations pédoclimatiques
-       • Plan d'extration d'eau
-       • Dimensionnement réseau d'irrigation
-       • Installation réseau d'irrigation
+       • Formations techniques agricoles
+       • Coaching personnalisé
+       • Séances pratiques sur site
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
+        icon: `👥`,
     },
     {
-        title: "Formations",
+        title: "Mise à disposition de ressources humaines",
         description: `
-       • Formation théorique PME en Agrobusiness
-       • Formation personnel technique
-       • Formation d'initiation aux pratiques agricoles au grand public
+       • Recrutement de personnel agricole
+       • Mise en relation avec des experts
+       • Assistance temporaire pour les récoltes
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
+        icon: `👨‍🏫`,
     },
     {
-        title: "Distribution",
+        title: "Mise à niveau normes et réglementation QHSE",
         description: `
-       • Plateforme web et application mobile
-       • Réseaux de partenaires
-       • Publicité en ligne
-       • Réseau de points focaux
+       • Audit de conformité
+       • Formation sur les normes agroalimentaires
+       • Implémentation des bonnes pratiques
     `,
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-        </svg>`,
-    },
-    
-]
+        icon: `✅`,
+    }
+];
+
+
 const agritech =[
     {
         title: "Conseil Agricole",
