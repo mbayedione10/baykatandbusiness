@@ -12,14 +12,16 @@ import Title from "../components/shared/Title.astro";
 import Paragraph from "../components/shared/Paragraph.astro";
 import Container from "../components/shared/Container.astro";
 import FixedButton from "../components/shared/FixedButton.astro";
+import Chatbot from "../components/shared/Chatbot.astro";
 ---
 
 <Layout title="Baykat & Business">
-  <main class="flex flex-col gap-y-20  overflow-hidden">
+  <main class="flex flex-col gap-y-20 overflow-hidden">
     <Hero />
     <Services
+      serviceLink="https://docs.google.com/forms/d/e/1FAIpQLSd32pkGKv4NQ-HSKi0jU4gQM42AsMNCrT3tJXBV612nxrCzvA/viewform"
       titreSection={"Nos Services"}
-      descSection={"Notre Engagement envers l'Agriculture: Une Gamme Complète de Services."}
+      descSection={"Besoin en assistance technique,  en conseil, travaux agricoles? Dites nous tous pour une prise en charge personnalisée et, si nécessaire, une évaluation des coûts relatifs au futur service rendu."}
       items={services}
     />
     <Container className="space-y-10 md:0">
@@ -46,9 +48,10 @@ import FixedButton from "../components/shared/FixedButton.astro";
     />
     <Contact />
     <FixedButton
-      href="https://docs.google.com/forms/d/e/1FAIpQLScDeacBPbpRcKuCTupYtwvkJeiP2OV61baTiAEVBXy9bNXabg/viewform"
-      text="Formation du 17-06 au 14-07 2024"
-	  variant="secondary"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScXpShDSqfxSq7d7NTEHJt0Y9y611uJEBPgrpWP0tLT02OiZQ/viewform"
+      text="S'inscrire a nos formations"
+      variant="secondary"
     />
   </main>
+  <Chatbot>
 </Layout>
