@@ -11,9 +11,10 @@ type ServicesProps = {
   description: string;
   icon: string;
   serviceLink?: string;
+  classname?: string;
 };
 
-const { titreSection, descSection, items, serviceLink } = Astro.props;
+const { titreSection, descSection, items, serviceLink, classname } = Astro.props;
 ---
 
 <section id="services">
@@ -34,7 +35,7 @@ const { titreSection, descSection, items, serviceLink } = Astro.props;
         </a>
       )}
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div class={classname ? classname : "grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"}>
       {
         items.map((service: ServicesProps) => {
           return (
