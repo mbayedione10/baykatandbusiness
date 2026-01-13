@@ -39,6 +39,8 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <slot name="head" />
   </head>
   <body class="overflow-hidden overflow-y-auto bg-body">
@@ -132,6 +134,23 @@ const { title } = Astro.props;
         overlayNav.setAttribute("data-is-visible", "false");
         document.body.classList.remove("!overflow-y-hidden");
         navbar.style.height = "0px";
+      });
+    }
+  </script>
+  <!-- Gestion Netlify Identity -->
+  <script is:inline>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          // Detecter les tokens dans le hash (invite, confirmation, recovery)
+          const hash = window.location.hash;
+          if (hash && (hash.includes("invite_token") || hash.includes("confirmation_token") || hash.includes("recovery_token"))) {
+            window.netlifyIdentity.open();
+          }
+        }
+      });
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
       });
     }
   </script>
