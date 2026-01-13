@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogList from '../../components/blog/BlogList.astro';
+import Container from '../../components/shared/Container.astro';
+
+// Get all published blog posts, sorted by date (newest first)
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.published === true;
+});
+
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title="Blog | Baykat & Business">
+  <Fragment slot="head">
+    <meta name="description" content="Découvrez nos articles sur l'agriculture, l'agrobusiness et nos conseils pour réussir vos projets agricoles au Sénégal." />
+    <meta property="og:title" content="Blog | Baykat & Business" />
+    <meta property="og:description" content="Découvrez nos articles sur l'agriculture, l'agrobusiness et nos conseils pour réussir vos projets agricoles au Sénégal." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/logo.png" />
+  </Fragment>
+
+  <main class="pt-32 lg:pt-36">
+    <!-- Hero Section -->
+    <section class="pb-8">
+      <Container>
+        <div class="relative">
+          <!-- Decorative elements (matching Hero section) -->
+          <span class="absolute -left-6 md:left-4 top-0 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
+          <span class="absolute right-4 bottom-0 w-24 h-24 rounded-3xl bg-primary blur-xl opacity-80 hidden lg:block"></span>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Blog Posts List -->
+    <BlogList
+      posts={sortedPosts}
+      title="Notre Blog"
+      description="Découvrez nos articles sur l'agriculture, l'agrobusiness et nos conseils pour réussir vos projets agricoles."
+    />
+  </main>
+</Layout>

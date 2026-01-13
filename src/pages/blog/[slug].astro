@@ -1,0 +1,40 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BlogLayout from '../../components/blog/BlogLayout.astro';
+import BlogPost from '../../components/blog/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog', ({ data }) => {
+    return data.published === true;
+  });
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<'blog'>;
+};
+
+const { entry } = Astro.props;
+const { title, cover, author, date, tags, excerpt } = entry.data;
+
+// Generate description from excerpt or content
+const description = excerpt || entry.body?.slice(0, 160) + '...';
+
+// Get cover src
+const coverSrc = typeof cover === 'object' && 'src' in cover ? cover.src : cover;
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  cover={coverSrc}
+  author={author}
+  date={date}
+  tags={tags}
+>
+  <BlogPost post={entry} />
+</BlogLayout>

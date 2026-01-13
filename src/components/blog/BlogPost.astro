@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Container from '../shared/Container.astro';
+import Title from '../shared/Title.astro';
+import BlogTags from './BlogTags.astro';
+import BlogMeta from './BlogMeta.astro';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, cover, date, tags, author, authorImage } = post.data;
+
+// Get author image src
+const authorImageSrc = authorImage
+  ? (typeof authorImage === 'object' && 'src' in authorImage ? authorImage.src : authorImage)
+  : null;
+const { Content } = await post.render();
+---
+
+<article>
+  <Container>
+    <!-- Header Section -->
+    <header class="max-w-4xl mx-auto text-center space-y-6 mb-10">
+      <!-- Tags -->
+      {tags.length > 0 && (
+        <BlogTags tags={tags} />
+      )}
+
+      <!-- Title -->
+      <Title>{title}</Title>
+
+      <!-- Meta -->
+      <BlogMeta author={author} date={date} />
+    </header>
+
+    <!-- Cover Image -->
+    <div class="max-w-5xl mx-auto mb-12">
+      <div class="rounded-3xl overflow-hidden shadow-lg shadow-box-shadow">
+        <img
+          src={typeof cover === 'object' && 'src' in cover ? cover.src : cover}
+          alt={title}
+          class="w-full h-auto object-cover max-h-[500px]"
+          loading="eager"
+        />
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-3xl mx-auto">
+      <div class="prose prose-lg dark:prose-invert prose-headings:text-heading-1 prose-p:text-heading-3 prose-a:text-primary prose-strong:text-heading-2 prose-ul:text-heading-3 prose-ol:text-heading-3 prose-li:text-heading-3 max-w-none">
+        <Content />
+      </div>
+    </div>
+
+    <!-- Author Card -->
+    <div class="max-w-3xl mx-auto mt-12 pt-8 border-t border-box-border">
+      <div class="p-5 sm:p-6 lg:p-8 rounded-3xl border border-box-border bg-box-bg shadow-lg shadow-box-shadow">
+        <div class="flex items-center gap-4">
+          {authorImageSrc ? (
+            <img
+              src={authorImageSrc}
+              alt={author}
+              class="w-16 h-16 rounded-full object-cover"
+            />
+          ) : (
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-green-500 flex items-center justify-center text-white text-2xl font-bold">
+              {author.charAt(0).toUpperCase()}
+            </div>
+          )}
+          <div>
+            <p class="text-heading-2 font-semibold">{author}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</article>

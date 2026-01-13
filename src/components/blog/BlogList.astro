@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+import Container from '../shared/Container.astro';
+import Title from '../shared/Title.astro';
+import Paragraph from '../shared/Paragraph.astro';
+
+export interface Props {
+  posts: CollectionEntry<'blog'>[];
+  title?: string;
+  description?: string;
+  showHeader?: boolean;
+}
+
+const {
+  posts,
+  title = "Notre Blog",
+  description = "Découvrez nos articles sur l'agriculture, l'agrobusiness et nos conseils pour réussir vos projets agricoles.",
+  showHeader = true
+} = Astro.props;
+---
+
+<section id="blog" class="py-16 md:py-20">
+  <Container className="space-y-10 md:space-y-12">
+    {showHeader && (
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <Title>{title}</Title>
+        <Paragraph>{description}</Paragraph>
+      </div>
+    )}
+
+    {posts.length > 0 ? (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {posts.map((post) => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12">
+        <Paragraph>Aucun article disponible pour le moment.</Paragraph>
+      </div>
+    )}
+  </Container>
+</section>

@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../shared/Container.astro';
+import BtnLink from '../shared/BtnLink.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  cover?: string;
+  author?: string;
+  date?: Date;
+  tags?: string[];
+}
+
+const {
+  title,
+  description = "Article du blog Baykat&Business",
+  cover,
+  author,
+  date,
+  tags = []
+} = Astro.props;
+
+// Generate OG image URL
+const ogImage = cover || '/images/logo.png';
+
+// Format date for structured data
+const isoDate = date?.toISOString();
+---
+
+<Layout title={`${title} | Blog | Baykat & Business`}>
+  <Fragment slot="head">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={description} />
+    {author && <meta name="author" content={author} />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Baykat & Business" />
+    {isoDate && <meta property="article:published_time" content={isoDate} />}
+    {author && <meta property="article:author" content={author} />}
+    {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </Fragment>
+
+  <main class="pt-32 lg:pt-36 pb-16">
+    <!-- Breadcrumb -->
+    <Container className="mb-8">
+      <nav class="flex items-center gap-2 text-sm text-heading-3">
+        <a href="/" class="hover:text-primary transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+        <span>/</span>
+        <span class="text-heading-2 truncate max-w-xs">{title}</span>
+      </nav>
+    </Container>
+
+    <slot />
+
+    <!-- Back to blog link -->
+    <Container className="mt-12 pt-8 border-t border-box-border">
+      <BtnLink href="/blog" text="Retour au blog" variant="secondary" />
+    </Container>
+  </main>
+</Layout>

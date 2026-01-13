@@ -1,23 +1,27 @@
 const footerMenu = [
     {
         itemText: "Accueil",
-        itemLink: "#"
+        itemLink: "/"
     },
     {
         itemText: "Services",
-        itemLink: "#services"
+        itemLink: "/#services"
+    },
+    {
+        itemText: "Blog",
+        itemLink: "/blog"
     },
     {
         itemText: "A propos",
-        itemLink: "#a-propos"
+        itemLink: "/#a-propos"
     },
     {
         itemText: "eBaykat",
-        itemLink: "#agritech"
+        itemLink: "/#agritech"
     },
     {
         itemText: "Contact",
-        itemLink: "#contact"
+        itemLink: "/#contact"
     }
 ]
 

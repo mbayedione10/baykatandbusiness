@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Paragraph from '../shared/Paragraph.astro';
+import BtnLink from '../shared/BtnLink.astro';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, cover, date, tags, author, excerpt } = post.data;
+
+// Format date in French
+const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Generate excerpt from content if not provided
+const displayExcerpt = excerpt || post.body?.slice(0, 150) + '...';
+---
+
+<article class="p-5 sm:p-6 lg:p-8 rounded-3xl border border-box-border bg-box-bg shadow-lg shadow-box-shadow relative overflow-hidden flex flex-col h-full group">
+  <!-- Cover Image -->
+  <div class="relative -mx-5 sm:-mx-6 lg:-mx-8 -mt-5 sm:-mt-6 lg:-mt-8 mb-6 overflow-hidden">
+    <a href={`/blog/${post.slug}`} class="block">
+      <img
+        src={typeof cover === 'object' && 'src' in cover ? cover.src : cover}
+        alt={title}
+        class="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+    </a>
+    <!-- Tags overlay -->
+    {tags.length > 0 && (
+      <div class="absolute bottom-3 left-3 flex flex-wrap gap-2">
+        {tags.slice(0, 2).map((tag) => (
+          <span class="px-3 py-1 text-xs font-medium bg-primary/90 text-white rounded-full backdrop-blur-sm">
+            {tag}
+          </span>
+        ))}
+        {tags.length > 2 && (
+          <span class="px-3 py-1 text-xs font-medium bg-gray-800/70 text-white rounded-full backdrop-blur-sm">
+            +{tags.length - 2}
+          </span>
+        )}
+      </div>
+    )}
+  </div>
+
+  <!-- Content -->
+  <div class="flex-1 flex flex-col space-y-4">
+    <!-- Meta info -->
+    <div class="flex items-center gap-3 text-sm text-heading-3">
+      <time datetime={date.toISOString()}>
+        {formattedDate}
+      </time>
+      <span class="w-1 h-1 rounded-full bg-heading-3"></span>
+      <span>{author}</span>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-lg md:text-xl font-semibold text-heading-2 group-hover:text-primary transition-colors">
+      <a href={`/blog/${post.slug}`}>
+        {title}
+      </a>
+    </h2>
+
+    <!-- Excerpt -->
+    <Paragraph className="flex-1 line-clamp-3">
+      {displayExcerpt}
+    </Paragraph>
+
+    <!-- Read more link -->
+    <div class="pt-2">
+      <BtnLink
+        href={`/blog/${post.slug}`}
+        text="Lire la suite"
+        variant="secondary"
+      />
+    </div>
+  </div>
+
+  <!-- Decorative element (matching Service card) -->
+  <span class="absolute w-32 aspect-square -bottom-16 -right-16 bg-primary/10 rounded-full"></span>
+</article>

@@ -1,0 +1,22 @@
+---
+export interface Props {
+  tags: string[];
+  size?: 'sm' | 'md';
+  centered?: boolean;
+}
+
+const { tags, size = 'md', centered = true } = Astro.props;
+
+const sizeClasses = {
+  sm: 'px-3 py-1 text-xs',
+  md: 'px-4 py-1.5 text-sm'
+};
+---
+
+<div class={`flex flex-wrap gap-2 ${centered ? 'justify-center' : ''}`}>
+  {tags.map((tag) => (
+    <span class={`${sizeClasses[size]} font-medium bg-primary/10 text-primary rounded-full border border-primary/20`}>
+      {tag}
+    </span>
+  ))}
+</div>
