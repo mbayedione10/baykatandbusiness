@@ -39,8 +39,8 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Netlify Identity Widget -->
-    <script is:inline defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity Widget (via unpkg CDN) -->
+    <script is:inline src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
     <slot name="head" />
   </head>
   <body class="overflow-hidden overflow-y-auto bg-body">
