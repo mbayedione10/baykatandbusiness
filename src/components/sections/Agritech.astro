@@ -2,34 +2,144 @@
 import Container from "../shared/Container.astro";
 import Paragraph from "../shared/Paragraph.astro";
 import Title from "../shared/Title.astro";
+import EbaykatInstall from "./EbaykatInstall.astro";
+import { agritech } from "../../utils/data.ts";
+
+const APP_URL = "https://ebaykat.cocoveto.com";
 ---
 
-<section id="agritech" class="pb-5">
+<section id="agritech" class="py-16 md:py-24 overflow-hidden">
   <Container>
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-      <Title>
-        📱 eBaykat : Votre Allié Intelligent pour des Campagnes Agricoles
-        Réussies
-      </Title>
-      <Paragraph> Digitalisation de la chaîne de valeur </Paragraph>
+
+    <!-- Hero row : logo/texte à gauche, mockup à droite -->
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+      <!-- Colonne gauche -->
+      <div class="flex-1 space-y-6 text-center lg:text-left">
+        <img
+          src="/images/ebaykat-logo.png"
+          alt="Logo eBaykat"
+          width="120"
+          height="120"
+          loading="lazy"
+          decoding="async"
+          class="mx-auto lg:mx-0 w-24 h-24 object-contain"
+        />
+
+        <div class="space-y-3">
+          <Title>
+            eBaykat — Votre Allié Intelligent pour des Campagnes Agricoles Réussies
+          </Title>
+          <Paragraph>
+            Digitalisez l'intégralité de votre chaîne de valeur agricole : planifiez
+            vos campagnes, gérez vos intrants, coordonnez vos équipes et vendez
+            directement vos productions — le tout depuis une seule application.
+          </Paragraph>
+        </div>
+
+        <!-- CTA principal -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href={APP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full
+                   bg-green-500 text-white font-semibold text-base
+                   shadow-lg shadow-green-500/30
+                   hover:bg-green-600 transition-colors duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+            Accéder à l'application eBaykat
+          </a>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full
+                   border-2 border-primary text-primary font-semibold text-base
+                   hover:bg-primary hover:text-white transition-colors duration-200"
+          >
+            En savoir plus
+          </a>
+        </div>
+
+        <!-- Badge Web App -->
+        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5 justify-center lg:justify-start">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Application Web — aucun téléchargement requis, accessible depuis votre navigateur
+        </p>
+      </div>
+
+      <!-- Colonne droite : mockup -->
+      <div class="flex-1 flex justify-center lg:justify-end relative">
+        <!-- Halo décoratif -->
+        <div class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-primary/20 rounded-3xl blur-3xl -z-10 scale-110"></div>
+        <img
+          src="/images/Mockup- ebaykat.png"
+          alt="Interface de l'application eBaykat"
+          width="560"
+          height="420"
+          loading="lazy"
+          decoding="async"
+          class="rounded-2xl shadow-2xl w-full max-w-lg object-cover"
+        />
+      </div>
     </div>
-    <img
-      class="mx-auto mt-5 w-40 h-40"
-      alt="logo ebaykat"
-      width="200"
-      height="200"
-      src="/images/ebaykat-logo.png"
-      loading="lazy"
-      decoding="async"
-    />
-    <img
-      class="mx-auto rounded-2xl"
-      alt="agritech"
-      width="1000"
-      height="400"
-      src="/images/Mockup- ebaykat.png"
-      loading="lazy"
-      decoding="async"
-    />
+
+    <!-- Tuto installation -->
+    <EbaykatInstall />
+
+    <!-- Séparateur -->
+    <div class="mb-12 border-t border-box-border"></div>
+
+    <!-- Grille des 4 fonctionnalités -->
+    <div class="text-center mb-10 space-y-2">
+      <h3 class="text-xl md:text-2xl font-semibold text-heading-1">Ce que vous pouvez faire avec eBaykat</h3>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
+      {agritech.map((item) => (
+        <div class="p-6 lg:p-8 rounded-3xl border border-box-border bg-box-bg shadow-lg shadow-box-shadow relative overflow-hidden group hover:border-green-400/50 transition-colors duration-200">
+          <!-- Icône -->
+          <div class="rounded-xl dark:bg-gray-950 p-3 text-heading-1 w-max relative mb-5">
+            <span set:html={item.icon} />
+          </div>
+
+          <!-- Titre -->
+          <h4 class="text-lg md:text-xl font-semibold text-heading-2 mb-3">
+            {item.title}
+          </h4>
+
+          <!-- Description -->
+          <p class="text-heading-3 text-sm md:text-base leading-relaxed">
+            {item.description}
+          </p>
+
+          <!-- Décoration coin -->
+          <span class="absolute w-32 aspect-square -bottom-16 -right-16 bg-green-500/10 rounded-full group-hover:bg-green-500/20 transition-colors duration-200"></span>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA secondaire en bas de section -->
+    <div class="mt-12 text-center">
+      <a
+        href={APP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full
+               bg-primary text-white font-semibold text-base
+               shadow-lg shadow-primary/30
+               hover:bg-[#172554] transition-colors duration-200"
+      >
+        Essayer eBaykat gratuitement →
+      </a>
+    </div>
+
   </Container>
 </section>

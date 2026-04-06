@@ -1,0 +1,262 @@
+---
+import Container from "../shared/Container.astro";
+
+const APP_URL = "https://ebaykat.cocoveto.com";
+
+const stepsAndroid = [
+  {
+    step: 1,
+    title: "Ouvrez Chrome",
+    desc: `Rendez-vous sur ${APP_URL} dans le navigateur Chrome de votre téléphone Android.`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  },
+  {
+    step: 2,
+    title: 'Appuyez sur "⋮"',
+    desc: "Appuyez sur les trois points en haut à droite de l'écran pour ouvrir le menu du navigateur.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>`,
+  },
+  {
+    step: 3,
+    title: '"Ajouter à l\'écran d\'accueil"',
+    desc: "Dans le menu déroulant, sélectionnez l'option « Ajouter à l'écran d'accueil ».",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+  },
+  {
+    step: 4,
+    title: "Confirmez l'installation",
+    desc: "Appuyez sur « Ajouter » dans la fenêtre de confirmation. C'est fait !",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>`,
+  },
+];
+
+const stepsIos = [
+  {
+    step: 1,
+    title: "Ouvrez Safari",
+    desc: `Rendez-vous sur ${APP_URL} dans le navigateur Safari — obligatoire sur iPhone pour installer une web app.`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  },
+  {
+    step: 2,
+    title: "Appuyez sur Partager",
+    desc: 'Appuyez sur l\'icône Partager (□↑) au bas de l\'écran, au centre de la barre de navigation.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
+  },
+  {
+    step: 3,
+    title: '"Sur l\'écran d\'accueil"',
+    desc: 'Faites défiler la feuille de partage vers le bas et sélectionnez « Sur l\'écran d\'accueil ».',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>`,
+  },
+  {
+    step: 4,
+    title: 'Appuyez sur "Ajouter"',
+    desc: "Confirmez en appuyant sur « Ajouter » en haut à droite. L'icône eBaykat apparaît sur votre écran d'accueil.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>`,
+  },
+];
+---
+
+<section id="installer-ebaykat" class="py-16 md:py-24">
+  <Container>
+
+    <!-- En-tête -->
+    <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">
+        Installation gratuite
+      </span>
+      <h2 class="text-2xl md:text-4xl font-bold text-heading-1 leading-tight">
+        Installer eBaykat sur votre téléphone
+      </h2>
+      <p class="text-heading-3 text-base md:text-lg">
+        Sans passer par un store — directement depuis votre navigateur en 4 étapes.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex justify-center mb-10" role="tablist" aria-label="Choisissez votre système">
+      <div class="inline-flex rounded-2xl border border-box-border bg-box-bg p-1.5 shadow-sm gap-1">
+        <button
+          id="tab-android"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-android"
+          class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200
+                 bg-[#3ddc84]/15 text-[#1b7f3e] dark:text-[#3ddc84]"
+        >
+          <!-- Android icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.523 15.341A7.964 7.964 0 0 0 20 9.999C20 5.582 16.418 2 12 2S4 5.582 4 9.999a7.964 7.964 0 0 0 2.477 5.342L4.93 16.89A1 1 0 0 0 5.638 18.5H7v1.5A1.5 1.5 0 0 0 8.5 21.5h7A1.5 1.5 0 0 0 17 20v-1.5h1.362a1 1 0 0 0 .708-1.708l-1.547-1.451zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </svg>
+          Android
+        </button>
+        <button
+          id="tab-ios"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-ios"
+          class="tab-btn flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200
+                 text-heading-3 hover:text-heading-1"
+        >
+          <!-- Apple icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          iPhone / iPad
+        </button>
+      </div>
+    </div>
+
+    <!-- Panels -->
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Panel Android -->
+      <div id="panel-android" role="tabpanel" aria-labelledby="tab-android">
+        <div class="rounded-3xl border border-box-border bg-box-bg shadow-lg shadow-box-shadow overflow-hidden">
+
+          <!-- Header du panel -->
+          <div class="flex items-center gap-3 px-6 py-4 bg-[#3ddc84]/10 border-b border-box-border">
+            <span class="flex items-center justify-center w-9 h-9 rounded-full bg-[#3ddc84]/20 text-[#1b7f3e] dark:text-[#3ddc84]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.341A7.964 7.964 0 0 0 20 9.999C20 5.582 16.418 2 12 2S4 5.582 4 9.999a7.964 7.964 0 0 0 2.477 5.342L4.93 16.89A1 1 0 0 0 5.638 18.5H7v1.5A1.5 1.5 0 0 0 8.5 21.5h7A1.5 1.5 0 0 0 17 20v-1.5h1.362a1 1 0 0 0 .708-1.708l-1.547-1.451zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              </svg>
+            </span>
+            <div>
+              <p class="font-semibold text-heading-1 text-sm">Android</p>
+              <p class="text-xs text-heading-3">Via Google Chrome</p>
+            </div>
+          </div>
+
+          <!-- Steps -->
+          <div class="divide-y divide-box-border">
+            {stepsAndroid.map((s) => (
+              <div class="flex items-start gap-4 px-6 py-5 group">
+                <!-- Numéro -->
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full
+                             bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400
+                             font-bold text-sm">
+                  {s.step}
+                </span>
+                <!-- Contenu -->
+                <div class="flex-1 space-y-1">
+                  <p class="font-semibold text-heading-2 text-sm md:text-base">{s.title}</p>
+                  <p class="text-heading-3 text-sm leading-relaxed">{s.desc}</p>
+                </div>
+                <!-- Icône action -->
+                <span class="flex-shrink-0 text-green-500 opacity-60 group-hover:opacity-100 transition-opacity mt-0.5"
+                      set:html={s.icon} />
+              </div>
+            ))}
+          </div>
+
+          <!-- Footer tip -->
+          <div class="flex items-start gap-3 px-6 py-4 bg-green-50 dark:bg-green-900/10 border-t border-box-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14H11v-5h2v5zm0-7H11V7h2v2z"/>
+            </svg>
+            <p class="text-xs text-green-700 dark:text-green-400">
+              Si Chrome affiche une bannière « Installer l'application », vous pouvez aussi appuyer directement dessus.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel iOS -->
+      <div id="panel-ios" role="tabpanel" aria-labelledby="tab-ios" class="hidden">
+        <div class="rounded-3xl border border-box-border bg-box-bg shadow-lg shadow-box-shadow overflow-hidden">
+
+          <!-- Header du panel -->
+          <div class="flex items-center gap-3 px-6 py-4 bg-gray-100 dark:bg-gray-800/50 border-b border-box-border">
+            <span class="flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+            </span>
+            <div>
+              <p class="font-semibold text-heading-1 text-sm">iPhone / iPad</p>
+              <p class="text-xs text-heading-3">Via Safari — obligatoire sur iOS</p>
+            </div>
+          </div>
+
+          <!-- Steps -->
+          <div class="divide-y divide-box-border">
+            {stepsIos.map((s) => (
+              <div class="flex items-start gap-4 px-6 py-5 group">
+                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full
+                             bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300
+                             font-bold text-sm">
+                  {s.step}
+                </span>
+                <div class="flex-1 space-y-1">
+                  <p class="font-semibold text-heading-2 text-sm md:text-base">{s.title}</p>
+                  <p class="text-heading-3 text-sm leading-relaxed">{s.desc}</p>
+                </div>
+                <span class="flex-shrink-0 text-gray-400 opacity-60 group-hover:opacity-100 transition-opacity mt-0.5"
+                      set:html={s.icon} />
+              </div>
+            ))}
+          </div>
+
+          <!-- Footer tip -->
+          <div class="flex items-start gap-3 px-6 py-4 bg-gray-50 dark:bg-gray-800/30 border-t border-box-border">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14H11v-5h2v5zm0-7H11V7h2v2z"/>
+            </svg>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Sur iPhone, seul Safari permet d'ajouter une web app à l'écran d'accueil. Chrome et Firefox ne proposent pas cette option sur iOS.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA bas de section -->
+    <div class="mt-12 text-center">
+      <a
+        href={APP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full
+               bg-green-500 text-white font-semibold
+               shadow-lg shadow-green-500/30
+               hover:bg-green-600 transition-colors duration-200"
+      >
+        Ouvrir eBaykat maintenant →
+      </a>
+    </div>
+
+  </Container>
+</section>
+
+<script>
+  const tabAndroid = document.getElementById("tab-android")!;
+  const tabIos = document.getElementById("tab-ios")!;
+  const panelAndroid = document.getElementById("panel-android")!;
+  const panelIos = document.getElementById("panel-ios")!;
+
+  function activateAndroid() {
+    tabAndroid.setAttribute("aria-selected", "true");
+    tabIos.setAttribute("aria-selected", "false");
+    panelAndroid.classList.remove("hidden");
+    panelIos.classList.add("hidden");
+    tabAndroid.classList.add("bg-[#3ddc84]/15", "text-[#1b7f3e]", "dark:text-[#3ddc84]");
+    tabAndroid.classList.remove("text-heading-3", "hover:text-heading-1");
+    tabIos.classList.remove("bg-gray-100", "dark:bg-gray-800", "text-heading-1");
+    tabIos.classList.add("text-heading-3", "hover:text-heading-1");
+  }
+
+  function activateIos() {
+    tabIos.setAttribute("aria-selected", "true");
+    tabAndroid.setAttribute("aria-selected", "false");
+    panelIos.classList.remove("hidden");
+    panelAndroid.classList.add("hidden");
+    tabIos.classList.add("bg-gray-100", "dark:bg-gray-800", "text-heading-1");
+    tabIos.classList.remove("text-heading-3", "hover:text-heading-1");
+    tabAndroid.classList.remove("bg-[#3ddc84]/15", "text-[#1b7f3e]", "dark:text-[#3ddc84]");
+    tabAndroid.classList.add("text-heading-3", "hover:text-heading-1");
+  }
+
+  tabAndroid.addEventListener("click", activateAndroid);
+  tabIos.addEventListener("click", activateIos);
+</script>

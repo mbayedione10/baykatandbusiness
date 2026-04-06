@@ -23,7 +23,7 @@ const navItems = [
 ]
 ---
 
-<header class="absolute inset-x-0 top-0 z-50 py-6">
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 py-6 transition-all duration-300">
     <Container>
         <nav class="w-full flex justify-between gap-6 relative">
             <!-- logo -->
@@ -73,3 +73,16 @@ const navItems = [
         </nav>
     </Container>
 </header>
+
+<script>
+  const navbar = document.getElementById("navbar")!;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add("bg-body", "shadow-sm", "shadow-box-shadow", "py-3");
+      navbar.classList.remove("py-6");
+    } else {
+      navbar.classList.remove("bg-body", "shadow-sm", "shadow-box-shadow", "py-3");
+      navbar.classList.add("py-6");
+    }
+  }, { passive: true });
+</script>

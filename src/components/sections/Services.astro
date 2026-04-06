@@ -3,7 +3,6 @@ import Service from "../cards/Service.astro";
 import Container from "../shared/Container.astro";
 import Paragraph from "../shared/Paragraph.astro";
 import Title from "../shared/Title.astro";
-import Button from "../shared/Button.astro";
 import type { string } from "astro/zod";
 
 type ServicesProps = {
@@ -14,7 +13,7 @@ type ServicesProps = {
   classname?: string;
 };
 
-const { titreSection, descSection, items, serviceLink, classname } = Astro.props;
+const { titreSection, descSection, items, classname } = Astro.props;
 ---
 
 <section id="services">
@@ -26,14 +25,6 @@ const { titreSection, descSection, items, serviceLink, classname } = Astro.props
       <Paragraph>
         {descSection}
       </Paragraph>
-      {serviceLink && (
-        <a href={serviceLink} target="_blank">
-          <Button className="mt-4" variant={"secondary"}>
-            <span class="text-white relative z-[5]"
-              >Parlez nous de vos projets !</span>
-          </Button>
-        </a>
-      )}
     </div>
     <div class={classname ? classname : "grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"}>
       {
