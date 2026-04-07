@@ -28,12 +28,13 @@ const APP_URL = "https://ebaykat.cocoveto.com";
 
         <div class="space-y-3">
           <Title>
-            eBaykat — Votre Allié Intelligent pour des Campagnes Agricoles Réussies
+            eBaykat — Votre Allié Intelligent pour Gérer des Campagnes Agricoles Réussies
           </Title>
           <Paragraph>
-            Digitalisez l'intégralité de votre chaîne de valeur agricole : planifiez
-            vos campagnes, gérez vos intrants, coordonnez vos équipes et vendez
-            directement vos productions — le tout depuis une seule application.
+            Planifiez vos productions en un clic pour une meilleure programmation des activités et futures récoltes, consultez des fiches techniques agricoles en audio ou texte, interrogez notre chatbot conseiller agricole et suivez les prix du marché en temps réel.
+          </Paragraph>
+          <Paragraph>
+            Avec eBaykat, gérez vos campagnes agricoles plus intelligemment et transformez vos projets en succès durables.
           </Paragraph>
         </div>
 
@@ -75,19 +76,52 @@ const APP_URL = "https://ebaykat.cocoveto.com";
         </p>
       </div>
 
-      <!-- Colonne droite : mockup -->
+      <!-- Colonne droite : carousel mockups -->
       <div class="flex-1 flex justify-center lg:justify-end relative">
         <!-- Halo décoratif -->
         <div class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-primary/20 rounded-3xl blur-3xl -z-10 scale-110"></div>
-        <img
-          src="images/visuelsebaykat.webp"
-          alt="Interface de l'application eBaykat"
-          width="560"
-          height="420"
-          loading="lazy"
-          decoding="async"
-          class="rounded-2xl shadow-2xl w-full max-w-lg object-cover"
-        />
+
+        <div class="w-full max-w-lg">
+          <!-- Slides -->
+          <div id="ebaykat-carousel" class="relative overflow-hidden rounded-2xl shadow-2xl">
+            <div id="ebaykat-slides" class="flex transition-transform duration-500 ease-in-out">
+              <img
+                src="/images/visuelsebaykat.webp"
+                alt="Interface eBaykat — vue 1"
+                width="560"
+                height="420"
+                loading="eager"
+                decoding="async"
+                class="w-full flex-shrink-0 object-cover"
+              />
+              <img
+                src="/images/visuelsebaykat2.png"
+                alt="Interface eBaykat — vue 2"
+                width="560"
+                height="420"
+                loading="lazy"
+                decoding="async"
+                class="w-full flex-shrink-0 object-cover"
+              />
+            </div>
+
+            <!-- Flèches -->
+            <button id="carousel-prev" aria-label="Image précédente"
+              class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button id="carousel-next" aria-label="Image suivante"
+              class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <!-- Dots -->
+          <div class="flex justify-center gap-2 mt-4">
+            <button id="dot-0" aria-label="Slide 1" class="carousel-dot w-2.5 h-2.5 rounded-full bg-green-500 transition-all"></button>
+            <button id="dot-1" aria-label="Slide 2" class="carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-gray-600 transition-all"></button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -143,3 +177,39 @@ const APP_URL = "https://ebaykat.cocoveto.com";
 
   </Container>
 </section>
+
+<script>
+  const slides = document.getElementById("ebaykat-slides")!;
+  const dots = document.querySelectorAll<HTMLElement>(".carousel-dot");
+  const total = 2;
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(index: number) {
+    current = (index + total) % total;
+    slides.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => {
+      d.classList.toggle("bg-green-500", i === current);
+      d.classList.toggle("w-5", i === current);
+      d.classList.toggle("bg-gray-300", i !== current);
+      d.classList.toggle("dark:bg-gray-600", i !== current);
+      d.classList.toggle("w-2.5", i !== current);
+    });
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), 3500);
+  }
+
+  function resetAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
+
+  document.getElementById("carousel-prev")!.addEventListener("click", () => { goTo(current - 1); resetAuto(); });
+  document.getElementById("carousel-next")!.addEventListener("click", () => { goTo(current + 1); resetAuto(); });
+  document.getElementById("dot-0")!.addEventListener("click", () => { goTo(0); resetAuto(); });
+  document.getElementById("dot-1")!.addEventListener("click", () => { goTo(1); resetAuto(); });
+
+  startAuto();
+</script>
